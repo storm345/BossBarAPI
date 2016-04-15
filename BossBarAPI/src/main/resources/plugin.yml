@@ -1,0 +1,4 @@
+name: BossBarAPI
+author: 'storm345'
+main: org.stormdev.mc.bossbarapi.BossBarAPIPlugin
+version: 1.0

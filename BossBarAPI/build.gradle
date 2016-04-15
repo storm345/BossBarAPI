@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+compileJava.options.encoding = 'UTF-8'
+
+group = 'org.stormdev'
+version = '1.0'
+
+description = ""
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+
+    mavenLocal()
+	mavenCentral()
+    maven { url "http://repo.md-5.net/content/groups/public/" }
+    maven { url "http://stormdev.org/jenkins/plugin/repository/everything/" }
+}
+
+dependencies {
+    compile group: 'org.spigotmc', name: 'spigot', version: '1.9-R0.1-SNAPSHOT'
+}
+
+task sourceJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+    classifier = "sources"
+}
+
+artifacts {
+    archives sourceJar
+}
+
+jar {
+    // Keep jar clean:
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
+}
